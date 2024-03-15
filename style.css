@@ -4,7 +4,7 @@ body, html {
     background-color: #f0f0f0;
 }
 
-#app {
+#config {
     max-width: 600px;
     margin: auto;
     background-color: #fff;
@@ -19,6 +19,6 @@ input, button {
     box-sizing: border-box;
 }
 
-#displayArea {
+#display {
     margin-top: 20px;
 }

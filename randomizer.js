@@ -9,8 +9,13 @@ const competency = Array.from({length: 12}, (_, i) => `Competency Tile ${i + 1} 
 const roundScoring = Array.from({length: 12}, (_, i) => `Round Scoring Tile ${i + 1} `); // an array with numbered object for the 12 Round Scoring Tiles
 const endScoring = Array.from({length: 4}, (_, i) => `End Scoring Tile ${i + 1} `); // an array with numbered object for the  4 Endgame Scoring Tiles
 
-var minPlayers = 1;
+var minPlayers = 2;
 var maxPlayers = 5;
+
+function getRandomSubset(array, n) { // Creates a shallow copy of the array and shuffles it
+    let shuffledArray = [...array].sort(() => Math.random() - 0.5); 
+    return shuffledArray.slice(0, n);  // Slices the first 'n' elements to get the subset
+}
 
 function startRandomization() {
     const playerCount = parseInt(document.getElementById('playerCount').value);
@@ -18,14 +23,16 @@ function startRandomization() {
         alert('Please under a valid number of player between ' + minPlayers + ' and ' + maxPlayers +'.' );  // gives an alert if the number is out of range or not a number
         return;
         }
-        displayItems('playerBoards',shuffleTile(playerBoards.slice(0, playerCount +1 )));
-        displayItems('factions', shuffleTile(factions.slice(0, playerCount + 1 )));
+        displayItems('Player Boards', getRandomSubset(playerBoards, playerCount +1 ));
+        displayItems('Factions', getRandomSubset(factions, playerCount + 1 ));
+        displayItems('Innovation Tiles', getRandomSubset(innovations, 2 * (playerCount +1)));  // number of Innovation tiles uses a slight more complex formula
+        displayItems('Palaces', getRandomSubset(palaces, playerCount + 1));
     }
     const display = document.getElementById('display');
 
-function shuffleTile(tile){
-    return tile.sort(() => Math.random() - 0.5);
-}
+// function shuffleTile(tile){
+//     return tile.sort(() => Math.random() - 0.5);
+// }
 
 function displayItems(title, items) {
     const display = document.getElementById('display');

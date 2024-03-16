@@ -19,6 +19,7 @@ function getRandomSubset(array, n) { // Creates a shallow copy of the array and 
 
 function startRandomization() {
     const playerCount = parseInt(document.getElementById('playerCount').value);
+    console.log('Generating a game for ' + playerCount +' players');
     if (isNaN(playerCount) || playerCount < minPlayers || playerCount > maxPlayers){
         alert('Please under a valid number of player between ' + minPlayers + ' and ' + maxPlayers +'.' );  // gives an alert if the number is out of range or not a number
         return;
@@ -27,6 +28,11 @@ function startRandomization() {
         displayItems('Factions', getRandomSubset(factions, playerCount + 1 ));
         displayItems('Innovation Tiles', getRandomSubset(innovations, 2 * (playerCount +1)));  // number of Innovation tiles uses a slight more complex formula
         displayItems('Palaces', getRandomSubset(palaces, playerCount + 1));
+        displayItems('Round Bonuses', getRandomSubset(roundBonus, 6));
+        displayItems('Book Actions', getRandomSubset(bookActions, 3));
+        displayItems('Competency Tiles', getRandomSubset(competency, 12));
+        displayItems('Round Scoring Tiles', getRandomSubset(roundScoring,6));
+        displayItems('Endgame Scoring', getRandomSubset(endScoring, 1));
     }
     const display = document.getElementById('display');
 

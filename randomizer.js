@@ -18,8 +18,9 @@ function getRandomSubset(array, n) { // Creates a shallow copy of the array and 
 }
 
 function startRandomization() {
+    document.getElementById('display').innerHTML = ''; //clears the previous display
     const playerCount = parseInt(document.getElementById('playerCount').value);
-    console.log('Generating a game for ' + playerCount +' players');
+    console.log('Generating a game for ' + playerCount +' players');  //logs a Randomization attempt and notes the player count
     if (isNaN(playerCount) || playerCount < minPlayers || playerCount > maxPlayers){
         alert('Please under a valid number of player between ' + minPlayers + ' and ' + maxPlayers +'.' );  // gives an alert if the number is out of range or not a number
         return;

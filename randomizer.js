@@ -1,7 +1,8 @@
 const playerBoards = [ "Deserts", "Plains", "Swamps", "Lakes", "Forests", "Mountains", "Wastelands" ];
 const factions = ["Blessed", "Felines", "Goblins", "Illusionists", "Inventors",
 "Lizards", "Moles", "Monks", "Navigators", "Omar", "Philosophers", "Psychics"];
-const innovations = Array.from({length: 18}, (_, i) => `Innovation ${i + 1} `); // an array with numbered object for the 18 Innovation tiles
+const innovations =["Architecture", "Census", "Colleges", "Communications", "Deus Ex Machina", "Guild","League of Cities", "Library", "Monument", "Palace", "Professors", "School",
+"Sewerage", "Steam Power", "Steel", "Trading Routes", "University", "Workshop"]; // an array with named objects for the 18 Innovation tiles
 const palaces = Array.from({length: 16}, (_, i) => `Palace ${i + 1}`);  // makes an array with an object for each numbered Palace, excluding the Special Palace which is either always or never included
 const roundBonus = Array.from({length: 10}, (_, i) => `Round Bonus Tile ${i + 1} `); // an array with numbered object for the  10 Round Bonus Tiles
 const bookActions = Array.from({length: 6}, (_, i) => `Book Action ${i + 1} `); // an array with numbered object for the 6 Book Aciton Tiles
@@ -74,7 +75,7 @@ function displayItems(title, items, columns = 4) {
         backgroundColors.reverse();
     }
     items.forEach((item, index) => {
-        const imageName = item.toLowerCase().replace(/\s+/g, '_') + '.jpg';
+        const imageName = item.toLowerCase().replace(/\s+/g, '') + '.jpg';
         const imagePath = `img/${imageName}`;
 
         const itemContainer = document.createElement('div');

@@ -107,11 +107,10 @@ function displayItems(title, items, columns = 4) {
             var reverseIndex = items.length - 1 - index;
             var colorIndex = reverseIndex % backgroundColors.length;
             if (title === "Innovation Tiles" && index <2){
-                // Calculate which colors to blend based on index
+    
             const color1 = backgroundColors[colorIndex + 2 - index];  // picks the right blend for the offsets
             const color2 = backgroundColors[colorIndex + 1 - index];
 
-            // Apply a linear gradient background combining two colors
             itemContainer.style.background = `linear-gradient(to right, ${color1} 50%, ${color2} 50%)`;
         } else {
             

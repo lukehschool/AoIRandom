@@ -40,7 +40,7 @@ input, button {
     gap: 20px;
 }
 
-/* for scaling the spaned items back down to normal size */
+/* For scaling the spaned items back down to normal size */
 .spanned-item{
     width:calc((50%) - 10px);
     justify-self: center;
@@ -61,12 +61,12 @@ input, button {
 }
 .title-container h1 {
     font-size: 2.5em; /* Adjust size as needed for "big text" */
-    text-align: center; /* Center the title if desired */
+    text-align: center; 
     margin-bottom: 0.5em; /* Space between the title and the notice */
 }
 
 .title-container p {
     font-size: 0.75em; /* Adjust size as needed for "small text" */
-    text-align: center; /* Center the text if desired */
-    color: #666; /* Optional: color for the copyright text */
+    text-align: center; 
+    color: #666; 
 }

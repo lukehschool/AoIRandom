@@ -25,16 +25,34 @@ input, button {
     justify-content: center;
 }
 
-.section-grid .images-container {
+
+/* For 3 columns */
+.three-columns {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Adjust for 4 columns */
-    gap: 20px; /* Space between items */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* For 4 columns */
+.four-columns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+/* for scaling the spaned items back down to normal size */
+.spanned-item{
+    width:calc((50%) - 10px);
+    justify-self: center;
 }
 
 .item-container {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    padding: 15px;
+    box-sizing: border-box;  /* makes a colorded border to match the place on the board if applicable
 }
 
 .game-component-image {

@@ -26,12 +26,12 @@ function startRandomization() {
         return;
         }
         displayItems('Player Boards', getRandomSubset(playerBoards, playerCount +1 ));
-        displayItems('Factions', getRandomSubset(factions, playerCount + 1 ));
-        displayItems('Innovation Tiles', getRandomSubset(innovations, 2 * (playerCount +1)));  // number of Innovation tiles uses a slight more complex formula
+        displayItems('Factions', getRandomSubset(factions, playerCount + 1 ), 3);
+        displayItems('Innovation Tiles', getRandomSubset(innovations, 2 * (playerCount +1)), 5);  // number of Innovation tiles uses a slight more complex formula
+        displayItems('Competency Tiles', getRandomSubset(competency, 12));
         displayItems('Palaces', getRandomSubset(palaces, playerCount + 1));
         displayItems('Round Bonuses', getRandomSubset(roundBonus, 6));
         displayItems('Book Actions', getRandomSubset(bookActions, 3));
-        displayItems('Competency Tiles', getRandomSubset(competency, 12));
         displayItems('Round Scoring Tiles', getRandomSubset(roundScoring,6));
         displayItems('Endgame Scoring', getRandomSubset(endScoring, 1));
     }
@@ -48,7 +48,7 @@ function startRandomization() {
 //     display.appendChild(section);
 // }
 
-function displayItems(title, items) {
+function displayItems(title, items, columns = 4) {
     const display = document.getElementById('display');
     const section = document.createElement('div');
     section.className = 'section-grid'; // Apply grid layout to each section
@@ -56,13 +56,53 @@ function displayItems(title, items) {
 
     const imagesContainer = section.querySelector('.images-container');
 
-    items.forEach(item => {
+    var offset = false; // a variable to check if there should be an offset
+
+    if (columns == 3){
+        imagesContainer.classList.add('three-columns');
+    } else if (columns == 5 && items.length % 4 === 2){
+        offset = true;
+        console.log(offset);
+        imagesContainer.classList.add('four-columns');
+    }
+    else {
+        imagesContainer.classList.add('four-columns');
+    }
+    var backgroundColors = [];
+    if ((title === "Innovation Tiles") || (title === "Competency Tiles")){
+        backgroundColors = ['#F4D03F' , '#3498DB', '#935116', '#B3B6B7' ];
+        backgroundColors.reverse();
+    }
+    items.forEach((item, index) => {
         const imageName = item.toLowerCase().replace(/\s+/g, '_') + '.jpg';
         const imagePath = `img/${imageName}`;
 
         const itemContainer = document.createElement('div');
         itemContainer.className = 'item-container';
+    
+        if ( offset == true){
+            if ( index <2){
+                itemContainer.style.gridColumn = 'span 2';  // puts the items offset if applicaable
+                itemContainer.classList.add('spanned-item');  //resizes them to the same size as the rest as span defaults to them being bigger
+            }
+            else {itemContainer.classList.add('four-columns');}
+        
+        }
+        if (backgroundColors){
+            var reverseIndex = items.length - 1 - index;
+            var colorIndex = reverseIndex % backgroundColors.length;
+            if (title === "Innovation Tiles" && index <2){
+                // Calculate which colors to blend based on index
+            const color1 = backgroundColors[colorIndex + 2 - index];  // picks the right blend for the offsets
+            const color2 = backgroundColors[colorIndex + 1 - index];
 
+            // Apply a linear gradient background combining two colors
+            itemContainer.style.background = `linear-gradient(to right, ${color1} 50%, ${color2} 50%)`;
+        } else {
+            
+            itemContainer.style.backgroundColor = backgroundColors[ colorIndex]
+        }
+    }
         const img = document.createElement('img');
         img.src = imagePath;
         img.alt = item;

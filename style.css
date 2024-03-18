@@ -52,7 +52,7 @@ input, button {
     align-items: center;
     height: 100%;
     padding: 15px;
-    box-sizing: border-box;  /* makes a colorded border to match the place on the board if applicable
+    box-sizing: border-box;  /* makes a colorded border to match the place on the board if applicable */
 }
 
 .game-component-image {

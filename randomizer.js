@@ -26,6 +26,20 @@ function startRandomization() {
         alert('Please under a valid number of player between ' + minPlayers + ' and ' + maxPlayers +'.' );  // gives an alert if the number is out of range or not a number
         return;
         }
+    
+    const firstPlayerIndex = Math.floor(Math.random() * playerCount) + 1;  // Randomly picks the first player
+
+  
+    const setupText = `Game setup for ${playerCount} players. Player ${firstPlayerIndex} goes first.`;
+
+
+    let setupInfo = document.getElementById('setup-info');
+    if (!setupInfo) {
+        setupInfo = document.createElement('div');
+        setupInfo.id = 'setup-info';
+        document.getElementById('display').insertBefore(setupInfo, document.getElementById('display').firstChild); // displays the text of player count and start player
+    }
+    setupInfo.textContent = setupText;
         displayItems('Player Boards', getRandomSubset(playerBoards, playerCount +1 ));
         displayItems('Factions', getRandomSubset(factions, playerCount + 1 ), 3);
         displayItems('Innovation Tiles', getRandomSubset(innovations, 2 * (playerCount +1)), 5);  // number of Innovation tiles uses a slight more complex formula

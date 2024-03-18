@@ -59,3 +59,14 @@ input, button {
     width: 100%; /* Ensure images are responsive within their container */
     height: auto; /* Maintain aspect ratio */
 }
+.title-container h1 {
+    font-size: 2.5em; /* Adjust size as needed for "big text" */
+    text-align: center; /* Center the title if desired */
+    margin-bottom: 0.5em; /* Space between the title and the notice */
+}
+
+.title-container p {
+    font-size: 0.75em; /* Adjust size as needed for "small text" */
+    text-align: center; /* Center the text if desired */
+    color: #666; /* Optional: color for the copyright text */
+}

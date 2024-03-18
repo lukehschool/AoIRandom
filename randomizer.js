@@ -106,7 +106,7 @@ function displayItems(title, items, columns = 4) {
         if (backgroundColors){
             var reverseIndex = items.length - 1 - index;
             var colorIndex = reverseIndex % backgroundColors.length;
-            if (title === "Innovation Tiles" && index <2){
+            if (title === "Innovation Tiles" && index <2 && offset == true){
     
             const color1 = backgroundColors[colorIndex + 2 - index];  // picks the right blend for the offsets
             const color2 = backgroundColors[colorIndex + 1 - index];

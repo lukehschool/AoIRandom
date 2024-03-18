@@ -41,10 +41,41 @@ function startRandomization() {
 //     return tile.sort(() => Math.random() - 0.5);
 // }
 
+// function displayItems(title, items) {
+//     const display = document.getElementById('display');
+//     const section = document.createElement('div');
+//     section.innerHTML = `<h3>${title}</h3><p>${items.join(', ')}</p>`;
+//     display.appendChild(section);
+// }
+
 function displayItems(title, items) {
     const display = document.getElementById('display');
     const section = document.createElement('div');
-    section.innerHTML = `<h3>${title}</h3><p>${items.join(', ')}</p>`;
+    section.className = 'section-grid'; // Apply grid layout to each section
+    section.innerHTML = `<h3>${title}</h3><div class='images-container'></div>`;
+
+    const imagesContainer = section.querySelector('.images-container');
+
+    items.forEach(item => {
+        const imageName = item.toLowerCase().replace(/\s+/g, '_') + '.jpg';
+        const imagePath = `img/${imageName}`;
+
+        const itemContainer = document.createElement('div');
+        itemContainer.className = 'item-container';
+
+        const img = document.createElement('img');
+        img.src = imagePath;
+        img.alt = item;
+        img.className = 'game-component-image';
+        img.onerror = function() {
+            this.style.display = 'none'; // Hide if not found
+            itemContainer.textContent = item; // Show text as fallback
+        };
+
+        itemContainer.appendChild(img);
+        imagesContainer.appendChild(itemContainer);
+    });
+
     display.appendChild(section);
 }
 

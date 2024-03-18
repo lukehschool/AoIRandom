@@ -20,5 +20,24 @@ input, button {
 }
 
 #display {
-    margin-top: 20px;
+    width: 100%; 
+    display: block;
+    justify-content: center;
+}
+
+.section-grid .images-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Adjust for 4 columns */
+    gap: 20px; /* Space between items */
+}
+
+.item-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-component-image {
+    width: 100%; /* Ensure images are responsive within their container */
+    height: auto; /* Maintain aspect ratio */
 }
